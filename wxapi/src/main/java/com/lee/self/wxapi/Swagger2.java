@@ -36,7 +36,7 @@ public class Swagger2 {
                 //页面标题
                 .title("微信api调用接口")
                 //创建人
-                .contact(new Contact("Jussi Lee", "http://www.baidu.com", ""))
+                .contact(new Contact("Jussi Lee", "https://github.com/jiaxilee126/wx-self", ""))
                 //版本号
                 .version("1.0")
                 //描述

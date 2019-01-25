@@ -7,10 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.spring.web.json.Json;
 
 /**
@@ -27,10 +24,10 @@ public class BlogController {
     @Autowired
     private IBlogService blogService;
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "根据id查询博文", notes = "查询数据库中某个学生的信息")
-    @ApiImplicitParam(name = "id", value = "学生id", paramType = "query", required = true, dataType = "Integer")
-    public JsonResult getById(Integer id) {
+    @ApiImplicitParam(name = "id", value = "博文id", paramType = "path", required = true, dataType = "Integer")
+    public JsonResult getById(@PathVariable("id") Integer id) {
         return  blogService.getById(id);
     }
 

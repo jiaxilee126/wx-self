@@ -3,16 +3,16 @@ package com.lee.self.common.vo;
 import lombok.Data;
 
 /**
- * @ClassName BlogVO
+ * @ClassName TechVO
  * @Description TODO
  * @Auth JussiLee
- * @Date 2019/1/23 17:34
+ * @Date 2019/1/25 8:47
  */
 @Data
-public class BlogVO {
+public class TechVO {
     private Integer id;
     private String title;
-    private String description;
-    private Boolean remand;
-    private String type;
+    private String icon;
+    private String level;
+    private String content;
 }

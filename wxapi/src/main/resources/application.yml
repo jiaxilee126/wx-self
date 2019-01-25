@@ -4,3 +4,9 @@ spring:
         url: jdbc:mysql://39.108.141.63:3306/wxself?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: root
         password: THTSS1000c
+    application:
+      name: wx
+server:
+  port: 8080
+  servlet:
+    context-path: /wx
