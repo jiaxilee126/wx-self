@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,10 +31,10 @@ public class ProjectController {
         return projectService.getAll();
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     @ApiOperation("根据id获取项目具体内容")
-    @ApiImplicitParam(name = "id", value = "项目id", paramType = "query", required = true, dataType = "Integer")
-    public JsonResult getById(Integer id) {
+    @ApiImplicitParam(name = "id", value = "项目id", paramType = "path", required = true, dataType = "Integer")
+    public JsonResult getById(@PathVariable("id") Integer id) {
         return projectService.getById(id);
     }
 

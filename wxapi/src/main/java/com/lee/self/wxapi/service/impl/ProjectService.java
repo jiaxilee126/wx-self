@@ -1,6 +1,7 @@
 package com.lee.self.wxapi.service.impl;
 
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.common.vo.ProjectDetailVO;
 import com.lee.self.common.vo.ProjectVO;
 import com.lee.self.core.beans.Project;
 import com.lee.self.core.dao.ProjectReposity;
@@ -41,6 +42,8 @@ public class ProjectService implements IProjectService {
     public JsonResult getById(Integer id) {
         Optional<Project> optional = projectReposity.findById(id);
         Project project = optional.get();
-        return JsonResult.data(project);
+        ProjectDetailVO projectDetailVO = new ProjectDetailVO();
+        BeanUtils.copyProperties(project, projectDetailVO);
+        return JsonResult.data(projectDetailVO);
     }
 }
