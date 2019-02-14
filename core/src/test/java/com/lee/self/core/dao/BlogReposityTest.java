@@ -36,4 +36,10 @@ public class BlogReposityTest {
         System.out.println(blogs.size());
     }
 
+    @Test
+    public void  findRecent() throws  Exception {
+        List<Blog> blogs = blogReposity.findRecent(3);
+        System.out.println(blogs.size());
+    }
+
 }

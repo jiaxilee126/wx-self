@@ -32,18 +32,29 @@
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>主页</span></a></li>
-            <li><a href="adminlte/pages/UI/sliders.html"><i class="fa fa-link"></i> <span>个人中心</span></a></li>
+            <li class="active"><a href="/"><i class="fa fa-home"></i> <span>主页</span></a></li>
+            <li><a href="/self"><i class="fa fa-heartbeat"></i> <span>个人中心</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>文章管理</span>
+                <a href="#"><i class="fa  fa-file-text-o"></i> <span>文章管理</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="adminlte/pages/charts/inline.html">文章列表</a></li>
-                    <li><a href="adminlte/pages/layout/collapsed-sidebar.html">文章标签</a></li>
-                    <li><a href="adminlte/pages/layout/collapsed-sidebar.html">文章发布</a></li>
+                    <li><a href="/articles"><i class="fa fa-circle-o"></i> 文章列表</a></li>
+                    <li><a href="/types"><i class="fa fa-circle-o"></i> 文章标签</a></li>
+                    <li><a href="/publish"><i class="fa fa-circle-o"></i> 文章发布</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-gears"></i> <span>技能中心</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/techcenter"><i class="fa fa-circle-o"></i> 技能面板</a></li>
+                    <li><a href="/techs"><i class="fa fa-circle-o"></i> 技能管理</a></li>
                 </ul>
             </li>
         </ul>

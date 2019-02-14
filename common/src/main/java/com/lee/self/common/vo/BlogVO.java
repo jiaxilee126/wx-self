@@ -2,6 +2,8 @@ package com.lee.self.common.vo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @ClassName BlogVO
  * @Description TODO
@@ -13,6 +15,7 @@ public class BlogVO {
     private Integer id;
     private String title;
     private String description;
-    private Boolean remand;
+    private Boolean recomand;
     private String type;
+    private Date createtime;
 }

@@ -7,8 +7,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                博客中心
+                <small>文章信息概览</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -18,7 +18,7 @@
 
         <!-- Main content -->
         <section class="content">
-
+            <#include "pages/home-list.ftl" />
             <!-- Your Page Content Here -->
 
         </section>

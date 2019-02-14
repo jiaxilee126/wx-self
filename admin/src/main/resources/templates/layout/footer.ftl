@@ -21,3 +21,13 @@
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/app.min.js"></script>
 
+<#--data tables-->
+<!-- DataTables -->
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
+<!-- SlimScroll -->
+<script src="/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/adminlte/plugins/fastclick/fastclick.js"></script>
+
