@@ -1,3 +1,5 @@
+random:
+  color: ["grey","yellow","blue","pink"]
 server:
     port: 8553
     max-http-header-size: 8192

@@ -1,7 +1,12 @@
 <#include "include/macro.ftl">
-    <@header></@header>
+    <@header>
+    </@header>
     <@sidebar></@sidebar>
-
+<style type="text/css">
+    .wx-image{
+        width: 100%;
+    }
+</style>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -36,12 +41,27 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    这是一篇基于springboot 的微信小程序前后端管理平台<br>
-                                    小程序二维码<br>
+                                <div class="col-md-10">
+                                    这是一个集成微信小程序及web前后端统一博客展示系统<br>
+                                    前端使用小程序展示博客列表，技能列表及工作经历<br>
+                                    管理后台采用了SpringBoot，redis，jpa，swagger-ui等技术<br>
+                                    项目主要包含4个模块：wxapi/admin/core/common；<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; wxapi主要是提供给小程序的接口;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; admin是管理后台;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; core主要针对数据的映射实体类及dao接口;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; common是一些公共类包<br>
                                     管理后台示例网址（用户名root，密码123456）：<br>
                                     主要是对个人博客知识点及项目内容的一种管理及展示系统<br>
                                 </div>
+                                <div class="col-md-2">
+                                    <h2>小程序二维码</h2>
+                                    <div class="wx-image">
+                                        <img class="wx-image" src="/images/wx-chengxu.jpg" >
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
                                 <!-- /.col -->
                                 <div class="col-md-12 pull-right">
                                     <div class="pull-right">
@@ -58,50 +78,9 @@
 
                                 </div>
                             </div>
+
                             <!-- /.row -->
                         </div>
-                        <!-- ./box-body -->
-                        <#--<div class="box-footer">
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="description-block border-right">
-                                        <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                                        <h5 class="description-header">$35,210.43</h5>
-                                        <span class="description-text">TOTAL REVENUE</span>
-                                    </div>
-                                    <!-- /.description-block &ndash;&gt;
-                                </div>
-                                <!-- /.col &ndash;&gt;
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="description-block border-right">
-                                        <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                                        <h5 class="description-header">$10,390.90</h5>
-                                        <span class="description-text">TOTAL COST</span>
-                                    </div>
-                                    <!-- /.description-block &ndash;&gt;
-                                </div>
-                                <!-- /.col &ndash;&gt;
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="description-block border-right">
-                                        <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                                        <h5 class="description-header">$24,813.53</h5>
-                                        <span class="description-text">TOTAL PROFIT</span>
-                                    </div>
-                                    <!-- /.description-block &ndash;&gt;
-                                </div>
-                                <!-- /.col &ndash;&gt;
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="description-block">
-                                        <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                                        <h5 class="description-header">1200</h5>
-                                        <span class="description-text">GOAL COMPLETIONS</span>
-                                    </div>
-                                    <!-- /.description-block &ndash;&gt;
-                                </div>
-                            </div>
-                            <!-- /.row &ndash;&gt;
-                        </div>-->
-                        <!-- /.box-footer -->
                     </div>
                     <!-- /.box -->
                 </div>
@@ -130,62 +109,31 @@
                                         <!-- timeline time label -->
                                         <li class="time-label">
                                           <span class="bg-red">
-                                            10 Feb. 2014
+                                            ${.now}
                                           </span>
                                         </li>
                                         <!-- /.timeline-label -->
                                         <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-envelope bg-blue"></i>
+                                        <@blogTag method="recentBlog" pageSize="5">
+                                            <#list recentBlog?reverse as blog>
+                                                <li>
+                                                    <i class="fa fa-comments"></i>
 
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fa fa-clock-o"></i> ${blog.createtime}</span>
 
-                                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                                                        <h3 class="timeline-header"> ${blog.title}</h3>
 
-                                                <div class="timeline-body">
-                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                    quora plaxo ideeli hulu weebly balihoo...
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-primary btn-xs">Read more</a>
-                                                    <a class="btn btn-danger btn-xs">Delete</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-user bg-aqua"></i>
+                                                        <#--<div class="timeline-footer">
+                                                            <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                                        </div>-->
+                                                    </div>
+                                                </li>
 
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                            </#list>
 
-                                                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-comments bg-yellow"></i>
+                                        </@blogTag>
 
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                                                <div class="timeline-body">
-                                                    Take me to your leader!
-                                                    Switzerland is small and neutral!
-                                                    We are more like Germany, ambitious and misunderstood!
-                                                </div>
-                                                <div class="timeline-footer">
-                                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                                </div>
-                                            </div>
-                                        </li>
                                         <!-- END timeline item -->
 
                                         <!-- END timeline item -->
@@ -218,25 +166,25 @@
                                 <div class="box-body">
                                     <ul class="products-list product-list-in-box">
                                         <li class="item">
-                                            <p>邮箱:jiaxiwuli@126.com</p>
+                                            <p>邮箱: jiaxiwuli@126.com</p>
                                         </li>
                                         <li class="item">
-                                            <p>官网:jiaxiwuli@126.com</p>
+                                            <p>官网: admin.lijiaxi.com.cn</p>
                                         </li>
                                         <li class="item">
-                                            <p>QQ群:jiaxiwuli@126.com</p>
+                                            <p>QQ群: 984359427</p>
                                         </li>
                                         <li class="item">
-                                            <p>微信:jiaxiwuli@126.com</p>
+                                            <p>微信: ****</p>
                                         </li>
 
                                         <!-- /.item -->
                                     </ul>
                                 </div>
-                                <!-- /.box-body -->
+                                <#--<!-- /.box-body &ndash;&gt;
                                 <div class="box-footer text-center">
                                     <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                                </div>
+                                </div>-->
                                 <!-- /.box-footer -->
                             </div>
                             <!-- /.box -->
@@ -256,7 +204,7 @@
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <ul class="products-list product-list-in-box">
-                                        <li class="item">
+                                        <#--<li class="item">
                                             <div class="product-img">
                                                 <img src="dist/img/default-50x50.gif" alt="Product Image">
                                             </div>
@@ -267,53 +215,10 @@
                                                   Samsung 32" 1080p 60Hz LED Smart HDTV.
                                                 </span>
                                             </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Bicycle
-                                                    <span class="label label-info pull-right">$700</span></a>
-                                                <span class="product-description">
-                                                  26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                                                <span class="product-description">
-                                                  Xbox One Console Bundle with Halo Master Chief Collection.
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
-                                        <li class="item">
-                                            <div class="product-img">
-                                                <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                            </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                                    <span class="label label-success pull-right">$399</span></a>
-                                                <span class="product-description">
-                                                  PlayStation 4 500GB Console (PS4)
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <!-- /.item -->
+                                        </li>-->
+
                                     </ul>
                                 </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer text-center">
-                                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                                </div>
-                                <!-- /.box-footer -->
                             </div>
                             <!-- /.box -->
                         </div>
@@ -337,12 +242,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <ul class="chart-legend clearfix">
-                                        <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                                        <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                                        <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                                        <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                                        <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                                        <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                                        <li><i class="fa fa-circle-o text-red"></i> SpringBoot</li>
+                                        <li><i class="fa fa-circle-o text-green"></i> AdminLTE</li>
+                                        <li><i class="fa fa-circle-o text-yellow"></i> Mysql</li>
+                                        <li><i class="fa fa-circle-o text-aqua"></i> Redis</li>
+                                        <li><i class="fa fa-circle-o text-light-blue"></i> MongoDB</li>
+                                        <li><i class="fa fa-circle-o text-gray"></i> 小程序</li>
                                     </ul>
                                 </div>
 
@@ -370,39 +275,16 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-8">
-                                    <div class="chart-responsive">
-                                        <canvas id="pieChart" height="150"></canvas>
+                                <div class="col-md-12">
+                                    <div class="wx-image">
+                                        <img class="wx-image" src="/images/wx-pay.png" >
                                     </div>
-                                    <!-- ./chart-responsive -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-4">
-                                    <ul class="chart-legend clearfix">
-                                        <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                                        <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                                        <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                                        <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                                        <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                                        <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
-                                    </ul>
                                 </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
                         </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer no-padding">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">United States of America
-                                    <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
-                                <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a>
-                                </li>
-                                <li><a href="#">China
-                                    <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
-                            </ul>
-                        </div>
-                        <!-- /.footer -->
+
                     </div>
                 </div>
             </div>

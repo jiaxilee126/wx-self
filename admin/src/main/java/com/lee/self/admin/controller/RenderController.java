@@ -42,7 +42,8 @@ public class RenderController {
         mv.addObject("month", blogService.getMouth());
         mv.addObject("looks",2198);
 
-        mv.addObject("blogrecent", blogService.getRecent());
+        //默认显示10
+        mv.addObject("blogrecent", blogService.getRecent(10));
         mv.addObject("techrecent", techService.findRecent());
         return mv;
     }
@@ -111,5 +112,13 @@ public class RenderController {
         ModelAndView mv = new ModelAndView("pages/selfcenter");
 
         return  mv;
+    }
+
+
+    @RequestMapping("/blogTag")
+    public ModelAndView tag() {
+        ModelAndView mv = new ModelAndView("pages/blogTag");
+
+        return mv;
     }
 }

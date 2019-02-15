@@ -46,7 +46,7 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public List<BlogVO> getRecent() {
+    public List<BlogVO> getRecent(Integer pageSize) {
         List<Blog> blogs = blogReposity.findRecent(10);
         List<BlogVO> blogVOS = new ArrayList<>();
         for (Blog blog : blogs) {

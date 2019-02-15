@@ -14,7 +14,7 @@ import java.util.List;
 public interface IBlogService {
     List<BlogVO> getAll();
 
-    List<BlogVO> getRecent();
+    List<BlogVO> getRecent(Integer pageSize);
 
     /**
      * 当月发布的文章数

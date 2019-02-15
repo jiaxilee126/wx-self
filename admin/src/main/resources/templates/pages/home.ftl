@@ -8,7 +8,7 @@
     <section class="content-header">
         <h1>
             博客中心
-            <small>文章信息概览</small>
+            <small>信息概览</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -29,7 +29,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">文章类型</span>
-                        <span class="info-box-number">21</span>
+                        <span class="info-box-number">${blognum}</span>
                     <#--<span class="info-box-number">90<small>%</small></span>-->
                     </div>
                     <!-- /.info-box-content -->
@@ -43,7 +43,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">本月发布</span>
-                        <span class="info-box-number">15</span>
+                        <span class="info-box-number">${month}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -60,7 +60,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">技能总览</span>
-                        <span class="info-box-number">25</span>
+                        <span class="info-box-number">${technum}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -73,7 +73,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">总浏览数</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-number">${looks}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -105,30 +105,27 @@
                             <table class="table no-margin">
                                 <thead>
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Item</th>
+                                    <th>ID</th>
+                                    <th>Title</th>
                                     <th>Status</th>
-                                    <th>Popularity</th>
+                                    <th>CreateTime</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                    <td>Call of Duty IV</td>
-                                    <td><span class="label label-success">Shipped</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                    </td>
-                                </tr>
+                                <#list blogrecent as blog>
+                                    <tr>
+                                        <td>${blog.id}</td>
+                                        <td>${blog.title}</td>
+                                        <#if "${blog.recomand}" >
+                                            <td> <span class="label label-success">是</span></td>
+                                        <#else>
+                                            <td> <span class="label label-default">否</span></td>
+                                        </#if>
+                                       <td>${blog.createtime}</td>
 
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                    <td>Call of Duty IV</td>
-                                    <td><span class="label label-success">Shipped</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                    </td>
-                                </tr>
+                                    </tr>
+                                </#list>
+
                                 </tbody>
                             </table>
                         </div>
@@ -136,8 +133,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                        <a href="/articles" class="btn btn-sm btn-default btn-flat pull-right">View All Blogs</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -161,37 +157,26 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="adminlte/dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                                    <#--<span class="label label-warning pull-right">$1800</span></a>-->
-                                        <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="adminlte/dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Bicycle
-                                    <#--<span class="label label-info pull-right">$700</span></a>-->
-                                        <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                                </div>
-                            </li>
-
+                            <#list techrecent as tech>
+                                <!-- /.item -->
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="${tech.icon}" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">${tech.title}
+                                        <#--<span class="label label-info pull-right">$700</span></a>-->
+                                            <span class="product-description">
+                                              ${tech.content}
+                                            </span>
+                                    </div>
+                                </li>
+                            </#list>
                         </ul>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                        <a href="/techs" class="uppercase">View All Tech</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
