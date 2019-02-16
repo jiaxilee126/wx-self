@@ -42,7 +42,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <#list types as type>
+                            <#list types?sort_by('id')?reverse as type>
                             <tr>
                                 <td>${type_index}</td>
                                 <td>${type.title}
@@ -51,25 +51,10 @@
                                 <td>${type.createtime}</td>
                             </tr>
                             </#list>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td> 4</td>
 
-                            </tr>
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                            </tr>
-                            </tfoot>
+
                         </table>
                     </div>
                     <!-- /.box-body -->
@@ -82,6 +67,11 @@
 
     </section>
     <!-- /.content -->
+
+    <#--消息提示框-->
+    <div class="row" style="z-index: 1051;position:absolute;right:12px;bottom:12px;width: 100%">
+        <div class="col-md-3 col-md-offset-9" id="tip"></div>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -93,7 +83,7 @@
                 <h4 class="modal-title" id="myModalLabel">增加标签</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="dataform">
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">标签名称:</label>
                         <input type="text" class="form-control" id="type-name" name="title">
@@ -106,11 +96,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <@footer></@footer>
 
 <script>
@@ -124,4 +116,45 @@
             "autoWidth": false
         });
     });
+
+    //模态框的表单提交
+    $('#typeModal').modal({
+        backdrop: 'static',
+        show: false
+    }).on('click', ':submit', function () {
+        saveType($(this));
+        
+    })
+    
+    function saveType($modal) {
+        var type = {
+            title: $('#type-name').val(),
+            icon: $('#type-icon').val()
+        }
+        $.ajax({
+            data: type,
+            url: "/type/add",
+            method: 'POST'
+        }).done(function (res) {
+            if(res.status == 0){
+                $('#typeModal').modal('hide');
+                tip('alert-success', '保存成功');
+                location.reload();
+            }else {
+                tip('alert-danger', res.msg);
+            }
+        })
+    }
+    
+    function tip(color,content) {
+        var html = '<div class="alert ' +
+                color +
+                ' alert-dismissible">\n' +
+                '                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+                '                <h4><i class="icon fa fa-ban"></i> Alert!</h4>\n' +
+                content +
+                '              </div>';
+        $('#tip').html(html);
+    }
+
 </script>

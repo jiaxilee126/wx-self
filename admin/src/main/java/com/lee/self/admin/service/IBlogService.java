@@ -1,6 +1,8 @@
 package com.lee.self.admin.service;
 
+import com.lee.self.common.result.JsonResult;
 import com.lee.self.common.vo.BlogVO;
+import com.lee.self.common.vo.ReqBlogVO;
 import com.lee.self.core.beans.Blog;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public interface IBlogService {
      * @return
      */
     Integer getMouth();
+
+    JsonResult save(ReqBlogVO blogVO);
 }

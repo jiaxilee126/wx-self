@@ -9,10 +9,10 @@
             <h1>
                 文章发布
             </h1>
-            <ol class="breadcrumb">
+            <#--<ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
                 <li class="active">Here</li>
-            </ol>
+            </ol>-->
         </section>
 
         <!-- Main content -->
@@ -33,11 +33,11 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="title">文章标题</label>
-                                    <input type="text" class="form-control" id="title" placeholder="我是标题">
+                                    <input type="text" name="title" class="form-control" id="title" placeholder="我是标题">
                                 </div>
                                 <div class="form-group">
                                     <label for="discription">文章简述</label>
-                                    <input type="text" class="form-control" id="discription" placeholder="我是一段简短的描述">
+                                    <input type="text" class="form-control" name="description" id="description" placeholder="我是一段简短的描述">
                                 </div>
                                 <div class="form-group">
                                     <label for="articleBox">文章内容</label>
@@ -46,22 +46,34 @@
                                         <textarea class="form-control col-md-7 col-xs-12" id="content" name="content" style="display: none"></textarea>
                                     </div>
                                 </div>
-                                <#--<div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <input type="file" id="exampleInputFile">
-
-                                    <p class="help-block">Example block-level help text here.</p>
+                                <div class="form-group">
+                                    <label for="typeid">请选择类型</label>
+                                    <select class="form-control" id="typeid" name="typeid">
+                                        <@typeTag method="types">
+                                            <#if types?exists && (types?size >0)>
+                                                <#list types as type>
+                                                    <option value="${type.id}">${type.title}</option>
+                                                </#list>
+                                            </#if>
+                                        </@typeTag>
+                                    </select>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Check me out
+                                <div class="form-group">
+                                    <label >
+                                        <input type="checkbox" name="recomand" id="recomand" >是否推荐</input>
                                     </label>
-                                </div>-->
+                                </div>
+                                <div class="form-group">
+                                    <label >
+                                        <input type="checkbox" name="status" id="status" checked >是否发布</input>
+                                    </label>
+                                </div>
+
                             </div>
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" id="publish" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -75,6 +87,10 @@
 
         </section>
         <!-- /.content -->
+        <#--消息提示框-->
+        <div class="row" style="z-index: 1051;position:absolute;right:12px;bottom:12px;width: 100%">
+            <div class="col-md-3 col-md-offset-9" id="tip"></div>
+        </div>
     </div>
 <@footer></@footer>
 
@@ -104,7 +120,7 @@
     // 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
     // editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
     // 上传图片到服务器
-    editor.customConfig.uploadImgServer = '<%=path%>/qiniu/upload';
+    editor.customConfig.uploadImgServer = '/qiniu/upload';
     editor.customConfig.uploadFileName = 'file';
     // 将图片大小限制为 5M
     editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
@@ -136,20 +152,43 @@
     };
 
     editor.create();
-    console.log()
 
-    $('#publishForm').find('.js-show').on('click', function (){
-        alert(editor.txt.html())
 
-    })
-    $('#publishForm').find('.js-save').on('click', function (){
+    $('#publish').on('click', function () {
+        var blog = {
+            title: $('#title').val(),
+            description: $('#description').val(),
+            content: $('#content').val(),
+            recomand: $('#recomand').val(),
+            status: $('#status').val()
+        }
+        console.log(blog)
         $.ajax({
-            url:'<%=path %>/article/save',
-            data:$('#publishForm').serialize()
-        }).
-        done(function (res){
-            console.log(res)
-        })
+            data: blog,
+            url: "/blog/publish",
+            method: 'POST'
+        }).done(function (res) {
+            if(res.status == 0){
 
+                tip('alert-success', '保存成功');
+                location.reload();
+            }else {
+                tip('alert-danger', res.msg);
+            }
+        })
     })
+
+    function tip(color,content) {
+        var html = '<div class="alert ' +
+                color +
+                ' alert-dismissible">\n' +
+                '                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+                '                <h4><i class="icon fa fa-ban"></i> Alert!</h4>\n' +
+                content +
+                '              </div>';
+        $('#tip').html(html);
+    }
+
+
+
 </script>

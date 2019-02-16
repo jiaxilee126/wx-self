@@ -36,7 +36,12 @@ public enum ResultCodeEnum {
 	BATCHCOUNT_NOT_OK(20021,"批次数量不合法"),
 	NAME_EXIST(20022,"名称已存在"),
 	CODE_EXIST(20033,"编码已存在"),
-	
+
+	BLOG_NAME_EXIST(21001,"名称已存在"),
+	BLOG_NAME_NOT_EMPTY(21002,"名称不能为空"),
+	BLOG_DES_NOT_EMPTY(21003,"描述不能为空"),
+	BLOG_CONTENT_NOT_EMPTY(21004,"内容不能为空"),
+
 	PARAMETER_ERROR(30001,"请求参数错误"),
 	UPLOAD_FILE_INVALID(30002,"上传文件不合法"),
 	
@@ -70,6 +75,7 @@ public enum ResultCodeEnum {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
-	}	
+	}
+
 	
 }

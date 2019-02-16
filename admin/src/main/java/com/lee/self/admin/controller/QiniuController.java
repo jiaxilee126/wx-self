@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -14,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
  * @Auth JussiLee
  * @Date 2019/2/13 15:19
  */
+@RestController
+@RequestMapping("/qiniu")
 public class QiniuController {
 
     @Autowired

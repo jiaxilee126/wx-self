@@ -1,6 +1,7 @@
 package com.lee.self.admin.service;
 
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.common.vo.ReqTypeVO;
 import com.lee.self.core.beans.Type;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @Date 2019/2/13 13:53
  */
 public interface ITypeService {
-    JsonResult add(Type type);
+    JsonResult add(ReqTypeVO type);
 
     List<Type> getAll();
 
@@ -22,5 +23,5 @@ public interface ITypeService {
      * 查找最近的类型
      * @return
      */
-    List<Type> findRecent();
+    List<Type> findRecent(Integer num);
 }

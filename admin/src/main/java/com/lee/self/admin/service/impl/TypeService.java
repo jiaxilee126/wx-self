@@ -2,8 +2,11 @@ package com.lee.self.admin.service.impl;
 
 import com.lee.self.admin.service.ITypeService;
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.common.result.ResultCodeEnum;
+import com.lee.self.common.vo.ReqTypeVO;
 import com.lee.self.core.beans.Type;
 import com.lee.self.core.dao.TypeReposity;
+import com.qiniu.util.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +25,12 @@ public class TypeService implements ITypeService {
     private TypeReposity typeReposity;
 
     @Override
-    public JsonResult add(Type type) {
-        typeReposity.save(type);
+    public JsonResult add(ReqTypeVO type) {
+        Type old = typeReposity.findByName(type.getTitle());
+        if(old != null){
+            return JsonResult.code(ResultCodeEnum.NAME_EXIST);
+        }
+        typeReposity.save(new Type(type.getTitle(), type.getIcon()));
         return JsonResult.ok();
     }
 
@@ -41,7 +48,7 @@ public class TypeService implements ITypeService {
     }
 
     @Override
-    public List<Type> findRecent() {
-        return null;
+    public List<Type> findRecent(Integer num) {
+        return typeReposity.findRecent(num);
     }
 }

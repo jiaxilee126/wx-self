@@ -15,12 +15,12 @@ public interface BlogReposity extends JpaRepository<Blog, Integer> {
     @Override
     List<Blog> findAll();
 
-    @Override
-    Optional<Blog> findById(Integer id);
-
     @Query(value = "select * from blog ORDER BY Id DESC LIMIT 0,:num", nativeQuery = true)
     List<Blog> findRecent(@Param("num") Integer num);
 
     @Query(value = "select count(*) from blog where date_format(Createtime,'%Y-%m')=date_format(now(),'%Y-%m') ", nativeQuery = true)
     Integer getMonth();
+
+    @Query(value = "select * from blog where title=:title", nativeQuery = true)
+    Blog findByTitle(@Param("title") String title);
 }

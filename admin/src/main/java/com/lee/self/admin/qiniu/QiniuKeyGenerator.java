@@ -14,7 +14,7 @@ public class QiniuKeyGenerator {
     
     
     public static String generateKey(){
-        return MessageFormat.format(KEY, "default", "img", "0", Long.toHexString(System.currentTimeMillis()));
+        return MessageFormat.format(KEY, "blog", "img", "0", Long.toHexString(System.currentTimeMillis()));
     }
     
     public static void main(String[] args) {

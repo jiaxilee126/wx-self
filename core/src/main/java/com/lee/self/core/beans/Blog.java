@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "Blog")
 public class Blog {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /**
      * 创建时间

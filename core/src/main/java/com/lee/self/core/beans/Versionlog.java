@@ -2,10 +2,7 @@ package com.lee.self.core.beans;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -19,7 +16,7 @@ import java.util.Date;
 @Table
 public class Versionlog {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String version;
     private String discription;

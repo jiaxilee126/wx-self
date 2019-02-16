@@ -40,7 +40,7 @@ public class QiniuWrapper {
     static{
         Properties properties =PropertiesUtil.getDefaultProperties();
         auth = Auth.create(properties.getProperty(CONFIG_AK), properties.getProperty(CONFIG_SK));
-        Configuration cfg = new Configuration(Zone.zone2());//设置空间上传域名
+        Configuration cfg = new Configuration(Zone.zone2());//设置华南空间上传域名
         uploadManager = new UploadManager(cfg);
         bucketName=properties.getProperty(CONFIG_BUCKET);
         String cdn = properties.getProperty(CONFIG_CDN);
@@ -74,6 +74,7 @@ public class QiniuWrapper {
     public static String upload(byte[] data,String key,boolean update){
         try {
             String token = update?auth.uploadToken(bucketName,key):auth.uploadToken(bucketName);
+            System.out.println(token);
             Response response = uploadManager.put(data, getFullKey(data, key), token);
             DefaultPutRet ret = response.jsonToObject(DefaultPutRet.class);
             return ret.key;
@@ -180,7 +181,7 @@ public class QiniuWrapper {
     
     public static void main(String[] args) {
 		System.out.println(getUploadToken());
-		String key = upload("D:/Documents/桌面/bbb.jpg", QiniuKeyGenerator.generateKey(), false);
+		String key = upload("D:/Documents/桌面/wx-chengxu.jpg", QiniuKeyGenerator.generateKey(), false);
 		
 		System.out.println("key = " + key);
 

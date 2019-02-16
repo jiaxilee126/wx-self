@@ -1,6 +1,7 @@
 package com.lee.self.admin.config;
 
 import com.lee.self.admin.tag.BlogTag;
+import com.lee.self.admin.tag.TypeTag;
 import com.lee.self.admin.tag.VersionTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +26,13 @@ public class TagConfig {
     @Autowired
     private VersionTag versionTag;
 
+    @Autowired
+    private TypeTag typeTag;
+
     @PostConstruct
     public void shareVariable() {
         configuration.setSharedVariable("versionTag", versionTag);
         configuration.setSharedVariable("blogTag", blogTag);
+        configuration.setSharedVariable("typeTag", typeTag);
     }
 }

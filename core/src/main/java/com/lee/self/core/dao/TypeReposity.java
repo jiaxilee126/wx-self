@@ -11,9 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface TypeReposity extends JpaRepository<Type, Integer> {
-    @Override
-    Optional<Type> findById(Integer id);
 
     @Query(value = "select * from type ORDER BY Id DESC LIMIT 0,:num", nativeQuery = true)
     List<Type> findRecent(@Param("num") Integer num);
+
+    @Query(value = "Select * from type where Title=:title", nativeQuery = true)
+    Type findByName(@Param("title") String title);
 }
