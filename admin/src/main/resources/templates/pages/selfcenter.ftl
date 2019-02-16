@@ -65,7 +65,7 @@
                                 <!-- /.col -->
                                 <div class="col-md-12 pull-right">
                                     <div class="pull-right">
-                                        <a class="btn btn-app ">
+                                        <a class="btn btn-app " href="https://github.com/jiaxilee126/wx-self">
                                             <i class="fa fa-github"></i> GitHub
                                         </a>
                                         <a class="btn btn-app">
