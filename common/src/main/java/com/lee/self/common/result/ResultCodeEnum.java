@@ -49,7 +49,10 @@ public enum ResultCodeEnum {
 	UNSURPORT(40002,"暂不支持此功能"),
 	
 	Unauthorized(50001,"未授权-权限不够"),
-	BUILD_IN_ROLE_DATA(50002,"系统内置角色，不允许修改或删除");
+	BUILD_IN_ROLE_DATA(50002,"系统内置角色，不允许修改或删除"),
+
+	QINIU_EXECPTION(60001, "七牛云异常"),
+	;
 	
 	
 	private int code;

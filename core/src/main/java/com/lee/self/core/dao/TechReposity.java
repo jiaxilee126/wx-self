@@ -16,4 +16,7 @@ public interface TechReposity extends JpaRepository<Tech, Integer> {
 
     @Query(value = "select * from tech ORDER BY Id DESC LIMIT 0,:num", nativeQuery = true)
     List<Tech> findRecent(@Param("num") Integer num);
+
+    @Query(value = "select * from tech where Title = :title", nativeQuery = true)
+    Tech findByTitle(@Param("title") String title);
 }

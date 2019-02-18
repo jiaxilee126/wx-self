@@ -2,11 +2,12 @@ package com.lee.self.admin.service.impl;
 
 import com.lee.self.admin.service.ITechService;
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.common.result.ResultCodeEnum;
+import com.lee.self.common.vo.ReqTechVO;
 import com.lee.self.common.vo.TechVO;
 import com.lee.self.core.beans.Tech;
 import com.lee.self.core.dao.TechReposity;
 import com.lee.self.core.enums.SkillLevelEnum;
-import com.qiniu.util.Json;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class TechService implements ITechService {
     @Autowired
     private TechReposity techReposity;
 
+    @Autowired
+    private QiniuService qiniuService;
+
     @Override
     public List<TechVO> getAll() {
         List<Tech> teches = techReposity.findAll();
@@ -40,7 +44,21 @@ public class TechService implements ITechService {
     }
 
     @Override
-    public JsonResult add(Tech tech) {
+    public JsonResult add(ReqTechVO techVO) {
+        String icon = qiniuService.uploadImg(techVO.getFile()).getData().toString();
+        Tech old = techReposity.findByTitle(techVO.getTitle());
+        if(old != null)
+            return JsonResult.code(ResultCodeEnum.NAME_EXIST);
+        if(org.springframework.util.StringUtils.isEmpty(icon))
+            return JsonResult.code(ResultCodeEnum.QINIU_EXECPTION);
+
+        Tech tech = new Tech();
+        tech.setContent(techVO.getDescription());
+        tech.setIcon(icon);
+        tech.setTitle(techVO.getTitle());
+        tech.setLevel(techVO.getLevel());
+        tech.setStatus(techVO.isStatus());
+
         techReposity.save(tech);
         return JsonResult.ok();
     }

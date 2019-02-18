@@ -1,6 +1,7 @@
 package com.lee.self.admin.service;
 
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.common.vo.ReqTechVO;
 import com.lee.self.common.vo.TechVO;
 import com.lee.self.core.beans.Tech;
 import com.qiniu.util.Json;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface ITechService {
     List<TechVO> getAll();
-    JsonResult add(Tech tech);
+    JsonResult add(ReqTechVO techVO);
     JsonResult update(Tech tech);
 
     /**

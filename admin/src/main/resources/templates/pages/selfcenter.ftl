@@ -115,7 +115,7 @@
                                         <!-- /.timeline-label -->
                                         <!-- timeline item -->
                                         <@blogTag method="recentBlog" pageSize="5">
-                                            <#list recentBlog?reverse as blog>
+                                            <#list recentBlog?sort_by('createtime')?reverse as blog>
                                                 <li>
                                                     <i class="fa fa-comments"></i>
 

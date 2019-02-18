@@ -155,12 +155,14 @@
 
 
     $('#publish').on('click', function () {
+        console.log($('#recomand').is(":checked"));
         var blog = {
             title: $('#title').val(),
             description: $('#description').val(),
-            content: $('#content').val(),
-            recomand: $('#recomand').val(),
-            status: $('#status').val()
+            content: editor.txt.html(),
+            recomand: $('#recomand').is(":checked")?1:0,
+            status: $('#status').is(":checked")?1:0,
+            typeid: $('#typeid').val()
         }
         console.log(blog)
         $.ajax({

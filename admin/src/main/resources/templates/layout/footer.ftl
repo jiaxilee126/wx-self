@@ -18,6 +18,7 @@
 <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/adminlte/bootstrap/css/bootstrap.css">
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/app.min.js"></script>
 
@@ -30,4 +31,8 @@
 <script src="/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="/adminlte/plugins/fastclick/fastclick.js"></script>
+
+<#--validator-->
+<script src="/validator/bootstrapValidator.js" ></script>
+<link rel="stylesheet" rel="/validator/bootstrapValidator.css">
 
