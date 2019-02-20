@@ -44,7 +44,12 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-
+		<!--用户服务-->
+		<dependency>
+			<groupId>com.lee.self</groupId>
+			<artifactId>user</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- 实现热部署 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,6 +70,8 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

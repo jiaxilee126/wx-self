@@ -1,6 +1,6 @@
-spring:
-    datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://39.108.141.63:3306/wxself?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
-        username: root
-        password: THTSS1000c
+#spring:
+#    datasource:
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://39.108.141.63:3306/wxself?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+#        username: root
+#        password: THTSS1000c

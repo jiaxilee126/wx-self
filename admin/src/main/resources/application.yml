@@ -58,6 +58,8 @@ spring:
                 content:
                     enabled: true
                     paths: /**
+    application:
+      name: admin
 
 
 ####################################�Զ�������##########################################
@@ -65,3 +67,10 @@ spring:
 #    # �Ƿ�����kaptcha��֤��
 #    enableKaptcha: false
 ####################################�Զ�������##########################################
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9001/eureka/
+  instance:
+    prefer-ip-address: true
