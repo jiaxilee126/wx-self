@@ -157,7 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- The user image in the navbar-->
                             <img src="/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Jussi Lee</span>
+                            <span class="hidden-xs">${user.username}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -190,7 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>

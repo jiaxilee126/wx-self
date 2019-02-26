@@ -1,11 +1,10 @@
 package com.lee.self.user.client;
 
 import com.lee.self.common.result.JsonResult;
+import com.lee.self.user.beans.User;
 import com.lee.self.user.vo.ReqUserVO;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName UserClient
@@ -13,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Auth JussiLee
  * @Date 2019/2/19 10:16
  */
-@FeignClient(value = "userClient", fallback = UserClient.UserClientFallback.class)
+@FeignClient(value = "user")
+        //, fallback = UserClient.UserClientFallback.class)
 public interface UserClient {
 
     @PostMapping("/user/login")
@@ -22,7 +22,11 @@ public interface UserClient {
     @GetMapping("/user/all")
     public JsonResult list();
 
-    static class UserClientFallback implements UserClient{
+    @GetMapping("/user/username")
+    public User getByUsername(@RequestParam("username") String username);
+
+
+   /* static class UserClientFallback implements UserClient{
         @Override
         public JsonResult login(ReqUserVO reqUserVO) {
             return null;
@@ -32,5 +36,5 @@ public interface UserClient {
         public JsonResult list() {
             return null;
         }
-    }
+    }*/
 }

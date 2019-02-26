@@ -40,4 +40,9 @@ public class UserService implements IUserService {
         log.info("users------>LENGTH==========="+users.size());
         return JsonResult.data(users);
     }
+
+    @Override
+    public User findByUsername(String username) {
+        return  userReposity.findByName(username);
+    }
 }

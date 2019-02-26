@@ -8,6 +8,7 @@ import com.lee.self.core.dao.BlogReposity;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,12 +31,19 @@ public class RenderController {
 
     @Autowired
     private ITechService techService;
+
+    @RequestMapping(value = {"/login","/"})
+    public ModelAndView login() {
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
+
     /**
      * 主页
      * @return
      */
-    @RequestMapping("/")
-    public ModelAndView login(){
+    @RequestMapping("/home")
+    public ModelAndView home(){
         ModelAndView mv = new ModelAndView("pages/home");
         mv.addObject("blognum", blogService.getAll().size());
         mv.addObject("technum", techService.getAll().size());
@@ -47,6 +55,8 @@ public class RenderController {
         mv.addObject("techrecent", techService.findRecent());
         return mv;
     }
+
+
 
     /**
      * 文章列表页

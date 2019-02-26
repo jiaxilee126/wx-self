@@ -2,6 +2,7 @@ package com.lee.self.user.controller;
 
 import com.lee.self.common.result.JsonResult;
 import com.lee.self.common.result.ResultCodeEnum;
+import com.lee.self.user.beans.User;
 import com.lee.self.user.service.IUserService;
 import com.lee.self.user.vo.ReqUserVO;
 import io.swagger.annotations.Api;
@@ -52,5 +53,12 @@ public class UserController {
     public JsonResult list() {
         log.info("req_all");
         return userService.list();
+    }
+
+    @GetMapping("/username")
+    @ApiOperation(value = "根据用户名获取用户信息", notes = "用户名获取用户信息")
+    @ApiImplicitParam(name = "username", value = "用户信息请求", required = true, dataType = "String", paramType = "path")
+    public User getByUsername(String username) {
+        return userService.findByUsername(username);
     }
 }

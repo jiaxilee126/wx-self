@@ -1,6 +1,9 @@
 package com.lee.self.admin.controller;
 
+import com.lee.self.common.result.JsonResult;
 import com.lee.self.user.client.UserClient;
+import com.lee.self.user.vo.ReqUserVO;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class LoginControllerTest {
 
     @Autowired
@@ -18,6 +22,13 @@ public class LoginControllerTest {
 
     @Test
     public void registor() {
+
+        ReqUserVO userVO = new ReqUserVO();
+        userVO.setUsername("lijiaxi");
+        userVO.setPassword("12234");
+        JsonResult jsonResult = userClient.login(userVO);
+        log.info("result --->{}" ,jsonResult.toString());
+
         System.out.println(userClient);
     }
 
