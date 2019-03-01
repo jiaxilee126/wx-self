@@ -82,7 +82,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                 //User userDetails = (User) authentication.getPrincipal();
-                logger.info("USER : " +"==" + " LOGIN SUCCESS !  ");
+                CustomSecurityUser usr = (CustomSecurityUser) authentication.getPrincipal();
+                logger.info("USER : "+usr.getUsername() +"==" + " LOGIN SUCCESS !  ");
                // response.setStatus(0);
                 //response.
                 super.onAuthenticationSuccess(request, response, authentication);

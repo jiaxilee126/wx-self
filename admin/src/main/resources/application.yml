@@ -60,23 +60,16 @@ spring:
     application:
       name: admin
 
-
-####################################�Զ�������##########################################
-#app:
-#    # �Ƿ�����kaptcha��֤��
-#    enableKaptcha: false
-####################################�Զ�������##########################################
-
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9001/eureka/
+      defaultZone: http://39.108.141.63:8100/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: 39.108.141.63:9099
 
 zuul:
   routes:
     user:
       path: /user/**
       serviceId: user
-

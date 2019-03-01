@@ -35,9 +35,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         }
         User user = userClient.getByUsername(username);
-//        User user = new User();
-//        user.setUsername(username);
-//        user.setPassword("$2a$10$9tigYrYX69lNyGkpYYc84.K6vZCS9nEeWEqEJqt/L5jrGlYC7XsPu");
+        //User user = new User();
+        //user.setUsername(username);
+        //user.setPassword("$2a$10$9tigYrYX69lNyGkpYYc84.K6vZCS9nEeWEqEJqt/L5jrGlYC7XsPu");
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         return new CustomSecurityUser(username, user.getPassword(),
                 true, // 是否可用

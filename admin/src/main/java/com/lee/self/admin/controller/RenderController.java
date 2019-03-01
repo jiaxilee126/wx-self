@@ -1,12 +1,18 @@
 package com.lee.self.admin.controller;
 
+import com.lee.self.admin.security.CustomSecurityUser;
 import com.lee.self.admin.service.IBlogService;
 import com.lee.self.admin.service.ITechService;
 import com.lee.self.admin.service.ITypeService;
 import com.lee.self.admin.service.impl.BlogService;
 import com.lee.self.core.dao.BlogReposity;
+import com.lee.self.user.beans.User;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,5 +136,14 @@ public class RenderController {
         ModelAndView mv = new ModelAndView("pages/blogTag");
 
         return mv;
+    }
+
+    @ModelAttribute("user")
+    public CustomSecurityUser getUser() {
+        CustomSecurityUser user = null;
+        SecurityContext ctx = SecurityContextHolder.getContext();
+        Authentication auth = ctx.getAuthentication();
+        if (auth.getPrincipal() instanceof UserDetails) user = (CustomSecurityUser) auth.getPrincipal();
+        return user;
     }
 }

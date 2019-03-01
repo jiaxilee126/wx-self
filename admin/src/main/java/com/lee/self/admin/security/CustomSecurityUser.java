@@ -1,8 +1,6 @@
 
 package com.lee.self.admin.security;
 
-import lombok.Data;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
